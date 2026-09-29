@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<title>ABD Optic — салон оптики в Алматы</title>
+<style>
+:root{
+--kimi-font-sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+--kimi-font-monospace:ui-monospace,monospace;
+--kimi-color-surface:#ffffff;
+--kimi-color-surface-muted:#f5f5f5;
+--kimi-color-text-primary:#1a1a1a;
+--kimi-color-text-secondary:#555555;
+--kimi-color-text-tertiary:#8a8a8a;
+--kimi-color-text-quaternary:#b0b0b0;
+--kimi-color-border:#e3e3e3;
+--kimi-color-accent:#2f6bff;
+--kimi-color-warning:#e6a700;
+--t-fast:120ms;--t-normal:200ms;--t-slow:300ms;
+--ease-out:cubic-bezier(.22,.61,.36,1);
+}
+body{margin:0;background:var(--kimi-color-surface);}
+
+.wrap{font-family:var(--kimi-font-sans);max-width:920px;margin:0 auto;color:var(--kimi-color-text-primary);padding:0 16px;}
+.wrap *{box-sizing:border-box;}
+button{font:inherit;cursor:pointer;}
+a{font:inherit;}
+nav{display:flex;align-items:center;gap:16px;padding:16px 4px;border-bottom:1px solid var(--kimi-color-border);position:sticky;top:0;background:var(--kimi-color-surface);z-index:10;}
+.nav-links{display:flex;gap:16px;margin-left:auto;}
+.nav-links a{color:var(--kimi-color-text-secondary);text-decoration:none;font-size:14px;transition:color var(--t-fast) var(--ease-out);}
+.nav-links a:hover{color:var(--kimi-color-text-primary);}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--kimi-color-text-primary);border-radius:10px;padding:10px 18px;background:var(--kimi-color-text-primary);color:var(--kimi-color-surface);font-size:14px;font-weight:500;transition:opacity var(--t-fast) var(--ease-out);}
+.btn:hover{opacity:.82;}
+.btn.ghost{background:transparent;color:var(--kimi-color-text-primary);}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding:56px 4px 40px;}
+h1{font-size:42px;font-weight:500;line-height:1.1;margin:0 0 12px;letter-spacing:0;}
+.hero p.sub{color:var(--kimi-color-text-secondary);font-size:16px;line-height:24px;margin:0 0 24px;max-width:42ch;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.chip{font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--kimi-color-border);color:var(--kimi-color-text-secondary);}
+.stats{display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;}
+.stat b{display:block;font-size:28px;font-weight:500;font-variant-numeric:tabular-nums;}
+.stat span{font-size:12px;color:var(--kimi-color-text-tertiary);}
+.glasses-box{display:flex;justify-content:center;}
+.glasses-box svg{width:100%;max-width:280px;color:var(--kimi-color-text-primary);}
+.draw{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 2.2s var(--ease-out) forwards;}
+.draw.d2{animation-delay:.5s;}
+.draw.d3{animation-delay:1s;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+.wink{animation:wink 4.5s infinite;transform-origin:center;}
+@keyframes wink{0%,88%,100%{transform:scaleY(1);}92%,96%{transform:scaleY(.06);}}
+section{padding:40px 4px;border-top:1px solid var(--kimi-color-border);}
+h2{font-size:20px;font-weight:500;margin:0 0 4px;}
+.sec-sub{color:var(--kimi-color-text-tertiary);font-size:14px;margin:0 0 24px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+.card{border:1px solid var(--kimi-color-border);border-radius:12px;padding:20px;transition:transform var(--t-normal) var(--ease-out),box-shadow var(--t-normal) var(--ease-out);}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.card .ico{width:40px;height:40px;border-radius:8px;background:var(--kimi-color-surface-muted);display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--kimi-color-text-primary);}
+.card h3{font-size:16px;font-weight:500;margin:0 0 6px;}
+.card p{font-size:14px;color:var(--kimi-color-text-secondary);line-height:20px;margin:0;}
+.price{border:1px solid var(--kimi-color-border);border-radius:12px;padding:24px;position:relative;display:flex;flex-direction:column;gap:8px;}
+.price.hot{border-color:var(--kimi-color-text-primary);}
+.badge{position:absolute;top:-10px;left:20px;font-size:12px;background:var(--kimi-color-text-primary);color:var(--kimi-color-surface);padding:2px 10px;border-radius:6px;}
+.price .amount{font-size:32px;font-weight:500;font-variant-numeric:tabular-nums;}
+.price .amount small{font-size:14px;font-weight:400;color:var(--kimi-color-text-tertiary);}
+.price ul{list-style:none;padding:0;margin:8px 0 16px;display:flex;flex-direction:column;gap:8px;}
+.price li{font-size:14px;color:var(--kimi-color-text-secondary);display:flex;gap:8px;align-items:flex-start;}
+.price li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--kimi-color-text-primary);margin-top:8px;flex:none;}
+.review{border:1px solid var(--kimi-color-border);border-radius:12px;padding:20px;}
+.review .head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.review .who{font-size:14px;font-weight:500;}
+.review .stars{color:var(--kimi-color-warning);font-size:14px;letter-spacing:2px;margin-left:auto;}
+.review p{font-size:14px;color:var(--kimi-color-text-secondary);line-height:20px;margin:0;}
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.c-item{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--kimi-color-border);border-radius:12px;padding:16px;}
+.c-item svg{flex:none;color:var(--kimi-color-text-primary);margin-top:2px;}
+.c-item b{font-size:14px;font-weight:500;display:block;margin-bottom:2px;}
+.c-item span{font-size:14px;color:var(--kimi-color-text-secondary);}
+footer{padding:24px 4px 8px;color:var(--kimi-color-text-tertiary);font-size:12px;border-top:1px solid var(--kimi-color-border);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity var(--t-slow) var(--ease-out),transform var(--t-slow) var(--ease-out);}
+.reveal.in{opacity:1;transform:none;}
+.vtest{border:1px solid var(--kimi-color-border);border-radius:12px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+#landolt{width:120px;height:120px;transition:opacity var(--t-fast);user-select:none;display:flex;align-items:center;justify-content:center;font-size:96px;font-weight:700;color:var(--violet);}
+.lwrap{width:140px;height:140px;display:flex;align-items:center;justify-content:center;}
+.dir{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:4px;justify-content:center;margin-top:8px;}
+.dir button{border:1px solid var(--kimi-color-border);border-radius:8px;background:var(--kimi-color-surface);color:var(--kimi-color-text-primary);font-size:16px;transition:background var(--t-fast);}
+.dir button:hover{background:var(--kimi-color-surface-muted);}
+.vres{font-size:14px;color:var(--kimi-color-text-secondary);text-align:center;margin-top:12px;min-height:20px;font-variant-numeric:tabular-nums;}
+@media(max-width:680px){.hero{grid-template-columns:1fr;}h1{font-size:32px;}.nav-links{display:none;}.vtest{grid-template-columns:1fr;}}
+
+:root{--ink:#1d1a3b;--teal:#10b5a5;--violet:#6a4cff;--coral:#ff5a5f;--sun:#ffc531;--pink:#ff8fc7;
+--kimi-color-surface:#fbfaff;--kimi-color-surface-muted:#efeaff;--kimi-color-text-primary:#1d1a3b;--kimi-color-text-secondary:#4a4670;--kimi-color-text-tertiary:#7a76a0;--kimi-color-border:#e2dcf7;--kimi-color-accent:#ff5a5f;
+--kimi-font-sans:"Manrope",system-ui,sans-serif;--disp:"Unbounded","Manrope",system-ui,sans-serif;}
+body{background:linear-gradient(180deg,#fbfaff,#f3efff);}
+h1,h2,.price .amount,.stat b{font-family:var(--disp);}
+nav{background:rgba(251,250,255,.9);backdrop-filter:blur(10px);border-bottom:0;}
+.btn{border:0;border-radius:999px;padding:12px 22px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;transition:transform var(--t-fast) var(--ease-out),box-shadow var(--t-fast);}
+.btn:hover{opacity:1;transform:translateY(-2px);box-shadow:0 8px 20px rgba(29,26,59,.25);}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);}
+.btn.wa{background:#25d366;color:#083b1d;}
+.btn.wa:hover{box-shadow:0 8px 20px rgba(37,211,102,.45);}
+.hero{position:relative;padding:48px 24px;margin-top:12px;border-radius:32px;background:radial-gradient(circle at 85% 20%,rgba(255,197,49,.55),transparent 45%),radial-gradient(circle at 70% 90%,rgba(16,181,165,.4),transparent 45%),radial-gradient(circle at 10% 0%,rgba(255,143,199,.5),transparent 45%),#fff;}
+h1{font-size:40px;font-weight:700;line-height:1.12;}
+.chip{border:0;font-weight:700;color:#fff;border-radius:999px;padding:6px 12px;}
+.chip:nth-child(1){background:var(--violet);}.chip:nth-child(2){background:var(--teal);}.chip:nth-child(3){background:var(--coral);}
+.stat b{font-size:22px;color:var(--violet);}.stat:nth-child(2) b{color:var(--coral);}.stat:nth-child(3) b{color:var(--teal);}
+.glasses-box svg{max-width:320px;filter:drop-shadow(0 14px 18px rgba(106,76,255,.25));}
+section{margin-top:20px;padding:36px 24px;border:0;border-radius:32px;background:#fff;}
+#abd-services{background:#e9fbf8;}#abd-reviews{background:#fff4d6;}#abd-contacts{background:#ece8ff;}
+h2{font-size:22px;font-weight:700;}
+.card{border:0;background:#fff;box-shadow:0 4px 14px rgba(29,26,59,.06);}
+.card:nth-child(1) .ico{background:var(--violet);}.card:nth-child(2) .ico{background:var(--teal);}.card:nth-child(3) .ico{background:var(--sun);}.card:nth-child(4) .ico{background:var(--coral);}
+.card .ico{color:#fff;border-radius:14px;}.card:nth-child(3) .ico{color:var(--ink);}
+.price{--c:var(--teal);border:0;padding:0;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(29,26,59,.08);gap:0;}
+.price.t2{--c:var(--violet);}.price.t3{--c:var(--coral);}
+.price .top{background:var(--c);color:#fff;padding:22px 24px 18px;}
+.price .top h3{margin:0 0 6px;font-family:var(--disp);font-size:16px;}
+.price .top .amount{font-size:30px;}.price .top small{color:#ffffffcc;}
+.price .body{padding:16px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.price ul{flex:1;}.price li::before{background:var(--c);}
+.price.hot{box-shadow:0 0 0 3px var(--sun),0 12px 28px rgba(106,76,255,.3);transform:translateY(-6px);}
+.badge{background:var(--sun);color:var(--ink);font-weight:700;top:10px;left:auto;right:14px;border-radius:999px;}
+.price .btn{justify-content:center;background:var(--c);color:#fff;box-shadow:none;}
+.review{border:0;background:#fff;box-shadow:0 4px 14px rgba(29,26,59,.06);}
+.c-item{border:0;background:#fff;}.c-item svg{color:var(--violet);}
+.vtest{border:0;background:#f3efff;}
+.dir button{border-radius:12px;background:#fff;}
+footer{border:0;margin-top:8px;}
+.wa-fab{position:fixed;right:16px;bottom:16px;z-index:20;box-shadow:0 8px 24px rgba(37,211,102,.5);}
+@media(max-width:680px){h1{font-size:28px;}.price.hot{transform:none;}}
+@media(prefers-reduced-motion:reduce){.wink,.draw{animation:none;stroke-dashoffset:0;}}
+
+.dir{grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,64px);gap:10px;margin-top:0;}
+.dir button{border:0;border-radius:20px;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 rgba(29,26,59,.22);transition:transform var(--t-fast) var(--ease-out),box-shadow var(--t-fast);-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.dir button:hover{background:inherit;transform:translateY(-2px);}
+.dir button:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(29,26,59,.22);}
+.dir button:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
+.k-up{background:var(--violet);}.k-left{background:var(--teal);}.k-right{background:var(--coral);}.k-down{background:var(--sun);color:var(--ink)!important;}
+.dir .k-reset{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink),0 5px 0 rgba(29,26,59,.12);border-radius:50%;}
+.dir .k-reset:hover{background:#fff;}
+a.c-item{text-decoration:none;color:inherit;transition:transform var(--t-fast) var(--ease-out),box-shadow var(--t-fast);}
+a.c-item:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(29,26,59,.12);}
+a.ig svg{color:#d6249f;}
+.btn.ig-btn{background:linear-gradient(45deg,#feda75,#fa7e1e 30%,#d62976 60%,#962fbf 85%,#4f5bd5);color:#fff;}
+@media(max-width:380px){.dir{grid-template-columns:repeat(3,56px);grid-template-rows:repeat(3,56px);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <svg width="34" height="24" viewBox="0 0 60 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+    <path class="draw" d="M4 6 H22 a8 8 0 0 1 8 8 a8 8 0 0 1-8 8 H10 a6 6 0 0 1-6-6 Z"/>
+    <path class="draw d2" d="M56 6 H38 a8 8 0 0 0-8 8 a8 8 0 0 0 8 8 h14 a6 6 0 0 0 6-6 Z"/>
+    <path class="draw d3" d="M56 6 L58 3 M4 6 L2 3 M30 10 q0-3 0-3"/>
+  </svg>
+  <b style="font-size:17px;font-weight:500;">ABD Optic</b>
+  <div class="nav-links">
+    <a href="#abd-services">Услуги</a><a href="#abd-prices">Цены</a><a href="#abd-reviews">Отзывы</a><a href="#abd-contacts">Контакты</a>
+  </div>
+  <a class="btn wa" data-wa="" style="margin-left:16px;padding:9px 16px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Записаться</a>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Смотрите на мир чётко<span style="color:var(--kimi-color-accent);">.</span></h1>
+    <p class="sub">Салон оптики в Алматы: проверка зрения, подбор очков и линз. Очки «всё включено» от 5 990 ₸ — оправа и линзы без скрытых доплат.</p>
+    <div class="chips">
+      <span class="chip">Бостандыкский район</span><span class="chip">Ежедневно 10:00–20:00</span><span class="chip">20 тыс. подписчиков в Instagram</span>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <button class="btn" onclick="document.getElementById('abd-prices').scrollIntoView({behavior:'smooth'})">Смотреть цены</button>
+      <button class="btn ghost" onclick="document.getElementById('abd-contacts').scrollIntoView({behavior:'smooth'})">Как нас найти</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>4,0</b><span>рейтинг на Яндекс.Картах</span></div>
+      <div class="stat"><b>5 990 ₸</b><span>очки «всё включено»</span></div>
+      <div class="stat"><b>7 дней</b><span>в неделю открыты</span></div>
+    </div>
+  </div>
+  <div class="glasses-box">
+    <svg viewBox="0 0 220 120" fill="none" stroke-linecap="round"><defs><linearGradient id="l1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a5f"/><stop offset="1" stop-color="#ffc531"/></linearGradient><linearGradient id="l2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a4cff"/><stop offset="1" stop-color="#10b5a5"/></linearGradient></defs>
+<g class="wink"><rect x="20" y="35" width="70" height="52" rx="22" fill="url(#l1)" fill-opacity=".35" stroke="url(#l1)" stroke-width="6"/><rect x="130" y="35" width="70" height="52" rx="22" fill="url(#l2)" fill-opacity=".35" stroke="url(#l2)" stroke-width="6"/><path d="M90 55 q20 -18 40 0 M20 45 L6 28 M200 45 L214 28" stroke="#1d1a3b" stroke-width="5"/><path d="M34 50 q8-6 16-4 M144 50 q8-6 16-4" stroke="#fff" stroke-width="4" opacity=".8"/></g></svg>
+  </div>
+</div>
+
+<section id="abd-services">
+  <h2>Услуги</h2>
+  <p class="sec-sub">Всё для вашего зрения в одном месте</p>
+  <div class="grid">
+    <div class="card reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/><path d="M11 13h2M3 11l-1.5-2M21 11l1.5-2"/></svg></div><h3>Подбор очков</h3><p>Внимательный подбор оправы по форме лица и стилю жизни — от классики до трендов.</p></div>
+    <div class="card reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg></div><h3>Проверка зрения</h3><p>Аккуратная диагностика у специалистов — как отмечают клиенты, «внимательно и без спешки».</p></div>
+    <div class="card reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div><h3>Солнцезащитные очки</h3><p>С UV-защитой — для города, вождения и отпуска.</p></div>
+    <div class="card reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3>Контактные линзы</h3><p>Подбор линз и обучение комфортному ношению с первого дня.</p></div>
+  </div>
+</section>
+
+<section id="abd-prices">
+  <h2>Цены «всё включено»</h2>
+  <p class="sec-sub">Оправа + линзы + работа мастера — фиксированная цена без сюрпризов</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+    <div class="price t1 reveal"><div class="top"><h3>Старт</h3><div class="amount">5 990 <small>₸</small></div></div><div class="body"><ul><li>Оправа на выбор</li><li>Стандартные линзы</li><li>Настройка и готовые очки в день заказа</li></ul><a class="btn" data-wa="Старт — 5 990 ₸"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Записаться на «Старт»</a></div></div><div class="price t2 hot reveal"><span class="badge">Популярный</span><div class="top"><h3>Комфорт</h3><div class="amount">13 000 <small>₸</small></div></div><div class="body"><ul><li>Оправа на выбор</li><li>Линзы с антибликовым покрытием</li><li>Футляр и салфетка в подарок</li></ul><a class="btn" data-wa="Комфорт — 13 000 ₸"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Записаться на «Комфорт»</a></div></div><div class="price t3 reveal"><div class="top"><h3>Премиум</h3><div class="amount">18 000 <small>₸</small></div></div><div class="body"><ul><li>Дизайнерская оправа</li><li>Антиблик + защита от царапин</li><li>Расширенная гарантия</li></ul><a class="btn" data-wa="Премиум — 18 000 ₸"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Записаться на «Премиум»</a></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Мини-проверка зрения</h2>
+  <p class="sec-sub">Кольцо Ландольта: куда смотрит разрыв? Примерьте 6 уровней чёткости</p>
+  <div class="vtest">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="lwrap"><div id="landolt"><svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="36" fill="none" stroke="#1d1a3b" stroke-width="18" stroke-dasharray="208.2 18" transform="rotate(14.3 50 50)"/></svg></div></div>
+      <div class="vres" id="vres">Уровень 1 из 6</div>
+    </div>
+    <div>
+      <div class="dir">
+        <span></span><button data-d="up" class="k k-up" aria-label="Вверх"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></button><span></span>
+        <button data-d="left" class="k k-left" aria-label="Влево"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><button class="k-reset" onclick="vtStart()" aria-label="Начать заново" title="Начать заново"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4.5h4.5"/></svg></button><button data-d="right" class="k k-right" aria-label="Вправо"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <span></span><button data-d="down" class="k k-down" aria-label="Вниз"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><span></span>
+      </div>
+      <p style="font-size:12px;color:var(--kimi-color-text-tertiary);text-align:center;margin-top:12px;">Игра не заменяет диагностику у специалиста — для точной проверки приходите в салон.</p>
+    </div>
+  </div>
+</section>
+
+<section id="abd-reviews">
+  <h2>Отзывы</h2>
+  <p class="sec-sub">Что говорят клиенты</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+    <div class="review reveal"><div class="head"><span class="who">Айгерим</span><span class="stars">★★★★★</span></div><p>«Специалист Инкар внимательно проверила зрение и подобрала идеальные очки. Чувствуется профессионализм».</p></div>
+    <div class="review reveal"><div class="head"><span class="who">Данияр</span><span class="stars">★★★★☆</span></div><p>«Взял очки по пакету "всё включено" — быстро, недорого и без навязанных доплат. Рекомендую».</p></div>
+    <div class="review reveal"><div class="head"><span class="who">Мадина</span><span class="stars">★★★★★</span></div><p>«Большой выбор оправ, помогли выбрать под форму лица. Очки готовы в день заказа».</p></div>
+  </div>
+</section>
+
+<section id="abd-contacts">
+  <h2>Контакты</h2>
+  <p class="sec-sub">Приходите — подберём вашу идеальную пару</p>
+  <div class="contacts">
+    <div class="c-item reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.7075 2.76001C12.0589 2.4086 12.6285 2.40873 12.9799 2.76001L21.2397 11.0198C21.5911 11.3713 21.5911 11.9408 21.2397 12.2922C20.8883 12.6436 20.3187 12.6436 19.9672 12.2922L19.9145 12.2395L15.4594 16.6956C15.474 18.3714 14.8988 20.0091 13.6684 21.2395C13.3169 21.591 12.7474 21.591 12.396 21.2395L8.21138 17.0559L4.90084 20.3469C4.54823 20.6971 3.97866 20.6946 3.62838 20.342C3.27809 19.9894 3.27971 19.4199 3.63228 19.0696L6.93892 15.7825L2.76021 11.6047C2.40876 11.2533 2.40875 10.6828 2.76021 10.3313C3.99062 9.10095 5.6283 8.52573 7.30416 8.54028L11.7592 4.08423L11.7075 4.03247C11.3562 3.68101 11.3562 3.11143 11.7075 2.76001Z"/></svg><div><b>Адрес</b><span>г. Алматы, ул. Байтурсынова, 169<br>Бостандыкский район, м. Байконур</span></div></div>
+    <div class="c-item reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg><div><b>Режим работы</b><span>Ежедневно<br>10:00 – 20:00</span></div></div>
+    <div class="c-item reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h4l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg><div><b>Телефоны</b><span>+7 778 632 78 04<br>+7 707 316 06 74</span></div></div>
+    <a class="c-item reveal ig" href="https://www.instagram.com/abd_optic/" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg><div><b>Instagram</b><span>@abd_optic<br>нажмите — откроется наш Instagram</span></div></a>
+  </div>
+  <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+    <a class="btn wa" data-wa=""><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Написать в WhatsApp</a>
+    <a class="btn" href="tel:+77786327804">Позвонить</a>
+    <a class="btn ig-btn" href="https://www.instagram.com/abd_optic/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+    <a class="btn ghost" href="https://2gis.kz/almaty/geo/70000001069054614" target="_blank" rel="noopener" style="text-decoration:none;">Открыть в 2ГИС</a>
+  </div>
+</section>
+
+<footer>
+  <span>ABD Optic — салон оптики, Алматы</span>
+  <span>Байтурсынова 169 · ежедневно 10:00–20:00</span>
+</footer>
+<a class="btn wa wa-fab" data-wa=""><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>WhatsApp</a>
+</div>
+<script>
+const WA_NUM='77786327804';
+document.querySelectorAll('[data-wa]').forEach(a=>{
+  const p=a.dataset.wa;
+  const t=p?'Здравствуйте! Меня интересует набор «'+p+'». Хочу записаться на этот набор. Подскажите, пожалуйста, свободное время.'
+           :'Здравствуйте! Хочу записаться в ABD Optic. Подскажите, пожалуйста, свободное время.';
+  a.href='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(t);a.target='_blank';a.rel='noopener';
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const L=document.getElementById('landolt'),R=document.getElementById('vres');
+const RING=L.innerHTML;
+const gaps={right:0,down:90,left:180,up:270};
+const sizes=[120,88,64,46,33,24];
+const labels=['1.0','0.8','0.6','0.4','0.3','0.2'];
+let lvl=0,cur='right',busy=false;
+function vtStart(){lvl=0;busy=false;L.innerHTML=RING;vtNext();}
+function vtNext(){
+  const dirs=Object.keys(gaps);let d;
+  do{d=dirs[Math.floor(Math.random()*4)];}while(d===cur&&lvl>0);
+  cur=d;
+  const svg=L.querySelector('svg');
+  svg.style.transform='rotate('+gaps[cur]+'deg)';
+  const px=sizes[lvl];svg.style.width=px+'px';svg.style.height=px+'px';
+  L.style.opacity=0;requestAnimationFrame(()=>L.style.opacity=1);
+  R.textContent='Уровень '+(lvl+1)+' из 6 · где разрыв?';
+}
+function vtAnswer(d){
+  if(busy)return;
+  if(d===cur){
+    lvl++;
+    if(lvl>=6){busy=true;L.innerHTML='✓';R.textContent='Отличный результат! ≈ '+labels[5];setTimeout(vtStart,2400);return;}
+    vtNext();
+  }else{
+    R.textContent='Промах — попробуйте ещё раз';L.style.opacity=.3;setTimeout(()=>L.style.opacity=1,180);
+  }
+}
+document.querySelectorAll('.dir button[data-d]').forEach(b=>b.addEventListener('click',()=>vtAnswer(b.dataset.d)));
+const keyMap={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};
+document.addEventListener('keydown',e=>{const d=keyMap[e.key];if(d&&document.querySelector('.vtest').matches(':hover, :focus-within')){e.preventDefault();vtAnswer(d);}});
+vtStart();
+</script>
+</body>
+</html>
